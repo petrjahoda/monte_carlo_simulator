@@ -2,11 +2,15 @@ package main
 
 import (
 	"fmt"
+	"github.com/leekchan/accounting"
+	"math"
 	"math/rand"
 )
 
 func main() {
-	daysOfCalculation := 2600
+	ac := accounting.NewAccounting("CZK", 2, " ", ".", "%v %s", "%s (%v)", "%s --")
+	initialValue := 16600.0
+	daysOfCalculation := 260
 	losses := 7
 	profits := 42
 	breakevens := 9
@@ -43,6 +47,9 @@ func main() {
 		fmt.Printf("%.2f pips\n", sum/float64(daysOfCalculation)/float64(daysOfCalculation))
 		fmt.Print("Daily percentage estimate after set days of calculation: ")
 		fmt.Printf("%.2f %%\n", 3.79/18.0*(sum/float64(daysOfCalculation)/float64(daysOfCalculation)-1))
+		fmt.Print("Total value after set days: ")
+		fmt.Printf(ac.FormatMoney(initialValue * math.Pow(1+(3.79/18.0*(sum/float64(daysOfCalculation)/float64(daysOfCalculation)-1))/100, float64(daysOfCalculation))))
+
 	}
 
 }
