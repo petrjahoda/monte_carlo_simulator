@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	// test
 	ac := accounting.NewAccounting("CZK", 2, " ", ".", "%v %s", "%s (%v)", "%s --")
 	initialValue := 16600.0
 	daysOfCalculation := 260
