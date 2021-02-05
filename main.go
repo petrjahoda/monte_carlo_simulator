@@ -8,15 +8,14 @@ import (
 )
 
 func main() {
-	// test
 	ac := accounting.NewAccounting("CZK", 2, " ", ".", "%v %s", "%s (%v)", "%s --")
-	initialValue := 16600.0
-	daysOfCalculation := 260
-	losses := 7
-	profits := 42
-	breakevens := 9
+	initialValue := 14300.0
+	daysOfCalculation := 21
+	losses := 5
+	profits := 57
+	breakevens := 10
 	profitPercentage := profits * 100 / (profits + losses + breakevens)
-	averageLossInPips := -14.5
+	averageLossInPips := -12.0
 	for i := 0; i < 10; i++ {
 		averageWinInPips := 18.0
 		var averages []float64
@@ -42,13 +41,14 @@ func main() {
 			sum += average
 		}
 		fmt.Println("")
-		fmt.Print("Total average sum of pips after set days of calculation: ")
+		fmt.Println("")
+		fmt.Print("Total average sum of pips after set days of calculation:  ")
 		fmt.Println(int(sum / float64(daysOfCalculation)))
-		fmt.Print("Average daily sum of pips after set days of calculation: ")
+		fmt.Print("Average daily sum of pips after set days of calculation:  ")
 		fmt.Printf("%.2f pips\n", sum/float64(daysOfCalculation)/float64(daysOfCalculation))
-		fmt.Print("Daily percentage estimate after set days of calculation: ")
+		fmt.Print("Daily percentage estimate after set days of calculation:  ")
 		fmt.Printf("%.2f %%\n", 3.79/18.0*(sum/float64(daysOfCalculation)/float64(daysOfCalculation)-1))
-		fmt.Print("Total value after set days: ")
+		fmt.Print("Total value after set days:                               ")
 		fmt.Printf(ac.FormatMoney(initialValue * math.Pow(1+(3.79/18.0*(sum/float64(daysOfCalculation)/float64(daysOfCalculation)-1))/100, float64(daysOfCalculation))))
 
 	}
